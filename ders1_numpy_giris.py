@@ -95,26 +95,3 @@ print("DataFrame:\n", df_dizi)
 # DataFrame'den tekrar NumPy dizisine dönüşüm
 dizi_geri = df_dizi.to_numpy()
 print("Pandas'tan NumPy'a Dönüşüm:\n", dizi_geri)
-
-# İçiçe Siyah-Beyaz Kareler Oluşturma (Manuel Yöntem)
-size = 500
-pix = 50
-uf = np.zeros((size, size))
-
-for j in range(pix, size, 2 * pix):
-    for i in range(j, min(j + pix, size)):
-        if i < size - 1:
-            uf[i, i:size-i] = 1
-            uf[i+1:size-(i+1), i] = 1
-            uf[i+1:size-(i+1), size-(i+1)] = 1
-            uf[size-(i+1), i:size-i] = 1
-
-# Matris çıktısı
-print(uf)
-
-# Görselleştirme
-plt.figure(figsize=(8, 8))
-plt.imshow(uf, cmap='gray', interpolation='nearest')
-plt.axis('off')  # Eksenleri kapatma
-plt.title("İçiçe Siyah-Beyaz Kareler")
-plt.show()
